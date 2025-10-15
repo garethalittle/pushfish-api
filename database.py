@@ -6,7 +6,7 @@ from config import Config
 
 cfg = Config.get_global_instance()
 
-engine = create_engine(cfg.database_uri, convert_unicode=True)
+engine = create_engine(cfg.database_uri)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
