@@ -43,7 +43,8 @@ db.init_app(app)
 db.app = app
 
 try:
-    database.init_db()
+    with app.app_context():
+        database.init_db()
 except Exception as err:
     _LOGGER.error("couldn't initialize database with URI: %s", cfg.database_uri)
     if cfg.GLOBAL_BACKTRACE_ENABLE:
